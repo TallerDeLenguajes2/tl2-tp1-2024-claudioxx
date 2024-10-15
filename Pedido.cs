@@ -6,14 +6,15 @@ enum Estado
 class Pedido
 {   
     static public int nroAi = 0;
-    public int nro;
+    public int id;
     string observacion;
     private Cliente cliente;
+    public Cadete cadete = null;
     public Estado estadoPedido;
 
     public Pedido(string obs, string nombreCliente, string direccionCliente, long telefonoCliente, string datosReferenciaDireccionCliente)
     {
-        nro = ++nroAi;
+        id = ++nroAi;
         observacion = obs;
         estadoPedido = Estado.Pendiente;
         cliente = new Cliente(nombreCliente,direccionCliente,telefonoCliente,datosReferenciaDireccionCliente);
@@ -21,7 +22,7 @@ class Pedido
 
     public void mostrarPedido(){
         this.cliente.mostrarCliente();
-        Console.Write("DATOS DEL PEDIDO:\n\nNro de Pedido: "+nro+"\nobservacion: " +observacion+ "\nEstado: " +estadoPedido+"\n\n");
+        Console.Write("DATOS DEL PEDIDO:\n\nNro de Pedido: "+id+"\nobservacion: " +observacion+ "\nEstado: " +estadoPedido+"\n\n");
     }
 
     public void cambiarEstadoPedido(){
